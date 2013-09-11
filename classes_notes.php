@@ -6,8 +6,8 @@ class MyClass{                  //Creating a class
         public $prop1 = "I'm a class property!";//the word "public" defines the visibility of a class property
 
         public function __construct(){//This magic method is trigged once a new object is created
-                //echo 'The class"', __CLASS__, '" was initiated!<br />';
-		echo "hola <br />";
+                echo 'The class"', __CLASS__, '" was initiated!<br />';
+		//echo "hola <br />";
         }
         public function __destruct(){//This magic method is trigged once the object
                 //echo 'This class was destroyed <br />';
@@ -39,6 +39,14 @@ class myOtherClass extends MyClass{
  public function setProperty(){//Overwriting a method
   return $this->prop1 . "<br />";
  }
+
+//Adding functions to an existing method preserving the old ones
+//we do this by means of "::" sintax
+public function __construct(){
+	parent::__construct();// Call the parent class's constructor
+	echo "A new constructor in ". __CLASS__ .".<br />";
+}
+
 }
 
 $myOtherObject = new myOtherClass;
