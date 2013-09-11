@@ -19,7 +19,7 @@ class MyClass{                  //Creating a class
         public function setProperty($newval){
                 $this->prop1 = $newval;                 //Inside the class we call the object with "this" word
         }
-        public function getProperty(){
+        private function getProperty(){//Changing the visibility of getProperty to private.
                 return $this->prop1 . "<br />";
         }
 }
@@ -46,13 +46,15 @@ public function __construct(){
 	parent::__construct();// Call the parent class's constructor
 	echo "A new constructor in ". __CLASS__ .".<br />";
 }
-
+public function callProperty(){
+	return $this->getProperty();
+}
 }
 
 $myOtherObject = new myOtherClass;
 
 //$myOtherObject->setProperty("This is the other object using methods and properties from MyClass class");
-echo $myOtherObject->setProperty();
+//echo $myOtherObject->setProperty();
 
 //----------------------Visibility of properties and methods---------------------------
 
@@ -61,5 +63,9 @@ echo $myOtherObject->setProperty();
 - Public: 	All methods and properties can be used from anywhere.
 - Protected:	All nethods and properties can only be called from the class that declarated them and extended classes
 - Private:	All methods and properties can only be called from the class that declarated them.*/
+
+//Calling a private method in the class MyClass by means of a public method created in the extended class muOtherClass that calls the first one
+
+echo $myOtherobject->callProperty();//Public method that calls a private method in a parent class
 
 ?>
