@@ -54,4 +54,12 @@ $myOtherObject = new myOtherClass;
 //$myOtherObject->setProperty("This is the other object using methods and properties from MyClass class");
 echo $myOtherObject->setProperty();
 
+//----------------------Visibility of properties and methods---------------------------
+
+/*There are three knid of visibility:
+
+- Public: 	All methods and properties can be used from anywhere.
+- Protected:	All nethods and properties can only be called from the class that declarated them and extended classes
+- Private:	All methods and properties can only be called from the class that declarated them.*/
+
 ?>
