@@ -19,7 +19,7 @@ class MyClass{                  //Creating a class
         public function setProperty($newval){
                 $this->prop1 = $newval;                 //Inside the class we call the object with "this" word
         }
-        private function getProperty(){//Changing the visibility of getProperty to private.
+        protected function getProperty(){//Changing the visibility of getProperty to private.
                 return $this->prop1 . "<br />";
         }
 }
@@ -64,8 +64,10 @@ $myOtherObject = new myOtherClass;
 - Protected:	All nethods and properties can only be called from the class that declarated them and extended classes
 - Private:	All methods and properties can only be called from the class that declarated them.*/
 
-//Calling a private method in the class MyClass by means of a public method created in the extended class muOtherClass that calls the first one
+//Calling a protected method
 
-echo $myOtherobject->callProperty();//Public method that calls a private method in a parent class
+$obj_from_the_class_parent = new MyClass;
+
+echo $obj_from_the_class_parent->getProperty();//This method getProperty() can be only accesed by an object instanced from the class that the method belos.
 
 ?>
