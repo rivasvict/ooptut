@@ -4,6 +4,8 @@
 class MyClass{                  //Creating a class
         //class properties and methods go here
         public $prop1 = "I'm a class property!";//the word "public" defines the visibility of a class property
+	public static $count = 0;
+
 
         public function __construct(){//This magic method is trigged once a new object is created
                 echo 'The class"', __CLASS__, '" was initiated!<br />';
@@ -19,7 +21,10 @@ class MyClass{                  //Creating a class
         public function setProperty($newval){
                 $this->prop1 = $newval;                 //Inside the class we call the object with "this" word
         }
-        protected function getProperty(){//Changing the visibility of getProperty to private.
+	public static function plusOne(){//an static method that uses an autoincrement variable operator called self
+		return "The count is". ++self::$count. "<br />";
+	}
+        protected function getProperty(){
                 return $this->prop1 . "<br />";
         }
 }
@@ -51,23 +56,21 @@ public function callProperty(){
 }
 }
 
-$myOtherObject = new myOtherClass;
-
 //$myOtherObject->setProperty("This is the other object using methods and properties from MyClass class");
 //echo $myOtherObject->setProperty();
 
-//----------------------Visibility of properties and methods---------------------------
+//----------------------Satatic functions or properties-------------------------------
 
-/*There are three knid of visibility:
+/*One function or property declarated as static can be accesed without instancing the class,
+static methods allows you to keeep the stored values for the duration of the script
 
-- Public: 	All methods and properties can be used from anywhere.
-- Protected:	All nethods and properties can only be called from the class that declarated them and extended classes
-- Private:	All methods and properties can only be called from the class that declarated them.*/
+This method or property can be called by NameOfMyClass::$name_of_my_object_/Property()
+*/
 
-//Calling a protected method
+//Calling the static method plusOne() and the static property $count
 
-$obj_from_the_class_parent = new MyClass;
-
-echo $obj_from_the_class_parent->getProperty();//This method getProperty() can be only accesed by an object instanced from the class that the method belos.
+do{
+	echo MyClass::plusOne();
+}while( MyClass::$count < 10 );
 
 ?>
