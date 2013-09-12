@@ -1,6 +1,9 @@
 
 <?
 
+//Taken from: http://net.tutsplus.com/tutorials/php/object-oriented-php-for-beginners/
+
+
 class MyClass{                  //Creating a class
         //class properties and methods go here
         public $prop1 = "I'm a class property!";//the word "public" defines the visibility of a class property
